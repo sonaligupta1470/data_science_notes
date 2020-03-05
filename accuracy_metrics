@@ -1,0 +1,31 @@
+Accuracy, Precision, Recall and F1-Score
+
+                         Prediction
+                    Positive    Negative                   
+          Positive     TP          FN                         TP - True Positives  FN - False Negatives
+Actual    Negative     FP          TN                         FP - False Positives TN - True Negatives
+
+
+Accuracy = Correct Predictions / Total Predictions = (TP + TN) / (TP + FN + FP + TN)
+
+As we can see, accuracy can be swayed by the presence of large TNs, it is not a good metrics for predicting model
+efficiency for real world business use cases. For example - a business might not be affected by the customers 
+reacting negatively to their ad campaign (which is a true negative for this use case), so if accuracy is driven
+high by large number of correct predictions of non adherents - this informaion is useless.
+
+Precision = True Positives / Total Predicted Positives = TP / (TP + FP)
+
+Precision comes into play when False Positives have a larger overhead on the business use case. Take example of 
+email spam detection, if an actual mail is mis-classified as spam, which is a False positive, it is detrimental 
+to business. In this scenario precision is a better metric to judge the efficiency of the model.
+
+Recall = True Positives/ Total Actual Positives = TP / (TP + FN)
+
+Recall is used as an efficiency metric when False Negatives drive the business. For instance, cancer detection
+model - if a sick person is classified as healthy (False positive scenario), it is unacceptable and highly risky.
+In such cases recall is the metric to go for.
+
+F1-Score = 2 * (Precision * Recall) / (Precision + Recall)
+
+When one needs balance between precision and recall metrics (both FPs and FNs are important to reduce) and there is
+uneven class distribution (large number of actual negatives), we should opt for F1-Score.
